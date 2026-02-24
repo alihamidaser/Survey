@@ -1,0 +1,40 @@
+name: Store survey response
+
+on:
+  repository_dispatch:
+    types: [survey_submission]
+
+jobs:
+  save-response:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Append survey response to CSV
+      shell: bash
+      run: |
+        mkdir -p data
+        if [ ! -f data/responses.csv ]; then
+          echo "Timestamp,Contact_Ease,Satisfaction,Issue_Resolved,Improvement_Suggestions" > data/responses.csv
+        fi
+        TS="$(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+        CE="${{ github.event.client_payload.Contact_Ease }}"
+        SAT="${{ github.event.client_payload.Satisfaction }}"
+        IR="${{ github.event.client_payload.Issue_Resolved }}"
+        IS="${{ github.event.client_payload.Improvement_Suggestions }}"
+        # Escape any quotes in the free text
+        IS_ESCAPED="$(echo "$IS" | sed 's/"/""/g')"
+        echo "$TS,$CE,$SAT,$IR,\"$IS_ESCAPED\"" >> data/responses.csv
+
+    - name: Commit changes
+      run: |
+        git config user.name "SurveyBot"
+        git config user.email "surveybot@example.com"
+        git add data/responses.csv
+        git commit -m "New survey response" || echo "No changes to commit"
+        git push
