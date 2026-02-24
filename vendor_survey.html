@@ -100,12 +100,10 @@
   </div>
 
 <script>
-  // -------- Configuration (replace placeholders) --------
-  const GITHUB_USERNAME = "alihamidaser";                  // <-- e.g., "alihamidaser"
-  const REPO_NAME       = "Survey";                  // <-- your repository name
-  const PAT             = "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";     // <-- fine-grained token with repo access (public)
+  <script>
+  // ---- Replace with your Web3Forms access key ----
+  const WEB3FORMS_ACCESS_KEY = "b8112e55-a700-4e45-b19e-88d9c21dc060";
 
-  // -------- Helpers --------
   const form  = document.getElementById('surveyForm');
   const toast = document.getElementById('toast');
   const submitBtn = document.getElementById('submitBtn');
@@ -126,7 +124,6 @@
     return true;
   }
 
-  // -------- Submit handler --------
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     toast.className = "toast"; toast.textContent = "";
@@ -138,42 +135,33 @@
 
     submitBtn.disabled = true;
 
-    const payload = Object.fromEntries(new FormData(form).entries());
-    const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/dispatches`;
+    // Build payload for Web3Forms
+    const fd = new FormData(form);
+    fd.append("access_key", WEB3FORMS_ACCESS_KEY);
+    fd.append("subject", "Vendor Satisfaction Survey – New Response");
+    fd.append("from_name", "Ericsson Support Service Survey");
 
     try {
-      const res = await fetch(url, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "Authorization": `token ${PAT}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          event_type: "survey_submission",
-          client_payload: payload
-        })
+        body: fd
       });
 
-      if (!res.ok){
-        const txt = await res.text();
-        throw new Error(res.status + " " + res.statusText + ": " + txt);
+      const data = await res.json();
+      if (data.success) {
+        showToast("Thank you! Your response has been submitted.");
+        form.reset();
+      } else {
+        throw new Error(data.message || "Submission failed");
       }
-
-      showToast("Thank you! Your response has been submitted.");
-      form.reset();
-    } catch (err){
+    } catch (err) {
       console.error(err);
       showToast("Submission error. Please try again or contact us. (" + err.message + ")", false);
     } finally {
       submitBtn.disabled = false;
     }
   });
-
-  // Optional: Clear status on reset
-  document.getElementById('resetBtn').addEventListener('click', ()=> {
-    toast.className = "toast"; toast.textContent = "";
-  });
+</script>
 </script>
 </body>
 </html>
