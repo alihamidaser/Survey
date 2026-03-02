@@ -5,163 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Vendor Satisfaction Survey – Ericsson Support Service Experience</title>
 <style>
-  :root{
-    --brand:#00275b;        /* dark Ericsson-like blue */
-    --brand-2:#00a9e0;      /* cyan accent */
-    --text:#111;
-    --muted:#666;
-    --bg:#fafbfc;
-    --card:#ffffff;
-    --border:#e6e8eb;
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #f6f8fa;
+    padding: 20px;
   }
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Segoe UI, Arial, Helvetica, sans-serif;}
-  .wrap{max-width:860px;margin:32px auto;padding:0 16px;}
-  header{margin-bottom:16px;}
-  h1{font-size:1.6rem;margin:0 0 6px;color:var(--brand);}
-  p.lead{margin:0 0 20px;color:var(--muted);}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 20px 6px;}
-  h2.sec{font-size:1.05rem;margin:20px 0 6px;color:#222}
-  .opts label{display:block;margin:.25rem 0;cursor:pointer}
-  textarea{width:100%;min-height:110px;padding:10px;border:1px solid var(--border);border-radius:8px;resize:vertical;font:inherit}
-  .req{color:#c62828;margin-left:4px}
-  .actions{margin:20px 0 10px;display:flex;gap:12px;align-items:center}
-  button{background:var(--brand);border:none;color:#fff;font-weight:600;padding:10px 18px;border-radius:8px;cursor:pointer}
-  button:disabled{opacity:.6;cursor:not-allowed}
-  .ghost{background:#eef6fb;color:#083e66}
-  .note{font-size:.9rem;color:var(--muted)}
-  .toast{display:none;margin-top:14px;padding:10px;border-radius:8px}
-  .toast.ok{display:block;background:#e7f6ec;color:#1b5e20;border:1px solid #a5d6a7}
-  .toast.err{display:block;background:#fdecea;color:#b71c1c;border:1px solid #f5c6cb}
-  footer{margin:26px 0 14px;color:var(--muted);font-size:.85rem}
-  .badge{display:inline-block;background:var(--brand-2);color:#00324a;font-weight:700;padding:2px 8px;border-radius:999px;font-size:.75rem;letter-spacing:.02em}
-  .stars{display:flex;gap:6px;margin:6px 0 10px}
-  .stars input{display:none}
-  .stars label{font-size:22px;color:#c0c6ce}
-  .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label{color:#ffb400}
-  /* mobile */
-  @media (max-width:580px){ h1{font-size:1.35rem} }
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+  }
+  h1 {
+    color: #00275b;
+  }
+  label { display: block; margin: 5px 0; }
+  textarea { width: 100%; min-height: 120px; }
+  button {
+    padding: 12px 24px;
+    background: #00275b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  button:hover {
+    background: #004094;
+  }
 </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <span class="badge">Survey</span>
-      <h1>Vendor Satisfaction Survey – Ericsson Support Service Experience</h1>
-      <p class="lead">
-        This survey is designed to gather feedback from vendors who have contacted our support service. Your responses will help us evaluate the accessibility, effectiveness, and overall quality of the support we provide.
-      </p>
-    </header>
 
-    <form id="surveyForm" class="card" novalidate>
-      <!-- Q1 -->
-      <h2 class="sec">1) How easy was it to contact our support service? <span class="req">*</span></h2>
-      <div class="opts" role="radiogroup" aria-label="Ease of contact">
-        <label><input type="radio" name="Contact_Ease" value="5 - Very easy" required> 5 ☆ – Very easy</label>
-        <label><input type="radio" name="Contact_Ease" value="4 - Easy"> 4 ☆ – Easy</label>
-        <label><input type="radio" name="Contact_Ease" value="3 - Neutral"> 3 ☆ – Neutral</label>
-        <label><input type="radio" name="Contact_Ease" value="2 - Difficult"> 2 ☆ – Difficult</label>
-        <label><input type="radio" name="Contact_Ease" value="1 - Very Difficult"> 1 ☆ – Very Difficult</label>
-      </div>
+<h1>Vendor Satisfaction Survey – Ericsson Support Service Experience</h1>
+<p>This survey is designed to gather feedback from vendors who have contacted our support service. Thank you for taking the time to share your input.</p>
 
-      <!-- Q2 -->
-      <h2 class="sec">2) Overall, how satisfied are you with the support provided? <span class="req">*</span></h2>
-      <div class="opts" role="radiogroup" aria-label="Overall satisfaction">
-        <label><input type="radio" name="Satisfaction" value="5 - Very satisfied" required> 5 – Very satisfied</label>
-        <label><input type="radio" name="Satisfaction" value="4 - Satisfied"> 4 – Satisfied</label>
-        <label><input type="radio" name="Satisfaction" value="3 - Neutral"> 3 – Neutral</label>
-        <label><input type="radio" name="Satisfaction" value="2 - Dissatisfied"> 2 – Dissatisfied</label>
-        <label><input type="radio" name="Satisfaction" value="1 - Very dissatisfied"> 1 – Very dissatisfied</label>
-      </div>
+<div class="card">
+https://formsubmit.co/hamid-aser-dan.ali@ericsson.com
 
-      <!-- Q3 -->
-      <h2 class="sec">3) Was your issue resolved by our support service? <span class="req">*</span></h2>
-      <div class="opts" role="radiogroup" aria-label="Issue resolved">
-        <label><input type="radio" name="Issue_Resolved" value="Yes" required> Yes</label>
-        <label><input type="radio" name="Issue_Resolved" value="Partially"> Partially</label>
-        <label><input type="radio" name="Issue_Resolved" value="No"> No</label>
-      </div>
+  <!-- Hidden settings -->
+  <input type="hidden" name="_subject" value="New Vendor Survey Submission">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://alihamidaser.github.io/Survey/thankyou.html">
 
-      <!-- Q4 -->
-      <h2 class="sec">4) What can we do to improve our support service? <span class="req">*</span></h2>
-      <textarea name="Improvement_Suggestions" placeholder="Enter your response here…" required></textarea>
+  <h3>1. How easy was it to contact our support service? *</h3>
+  <label><input type="radio" name="Contact_Ease" value="5 - Very easy" required> 5 ☆ - Very easy</label>
+  <label><input type="radio" name="Contact_Ease" value="4 - Easy"> 4 ☆ - Easy</label>
+  <label><input type="radio" name="Contact_Ease" value="3 - Neutral"> 3 ☆ - Neutral</label>
+  <label><input type="radio" name="Contact_Ease" value="2 - Difficult"> 2 ☆ - Difficult</label>
+  <label><input type="radio" name="Contact_Ease" value="1 - Very Difficult"> 1 ☆ - Very Difficult</label>
 
-      <div class="actions">
-        <button id="submitBtn" type="submit">Submit Survey</button>
-        <button id="resetBtn" type="reset" class="ghost" title="Clear all answers">Reset</button>
-      </div>
+  <h3>2. Overall, how satisfied are you with the support provided? *</h3>
+  <label><input type="radio" name="Satisfaction" value="5 - Very satisfied" required> 5 - Very satisfied</label>
+  <label><input type="radio" name="Satisfaction" value="4 - Satisfied"> 4 - Satisfied</label>
+  <label><input type="radio" name="Satisfaction" value="3 - Neutral"> 3 - Neutral</label>
+  <label><input type="radio" name="Satisfaction" value="2 - Dissatisfied"> 2 - Dissatisfied</label>
+  <label><input type="radio" name="Satisfaction" value="1 - Very dissatisfied"> 1 - Very dissatisfied</label>
 
-      <div id="toast" class="toast"></div>
-      <p class="note">Fields marked with <span class="req">*</span> are required.</p>
-    </form>
+  <h3>3. Was your issue resolved by our support service? *</h3>
+  <label><input type="radio" name="Issue_Resolved" value="Yes" required> Yes</label>
+  <label><input type="radio" name="Issue_Resolved" value="Partially"> Partially</label>
+  <label><input type="radio" name="Issue_Resolved" value="No"> No</label>
 
-    <footer>
-      © <span id="yr"></span> Vendor Satisfaction Survey — Ericsson Support Service Experience
-    </footer>
-  </div>
+  <h3>4. What can we do to improve our support service? *</h3>
+  <textarea name="Improvement_Suggestions" required></textarea>
 
-<script>
-  <script>
-  // ---- Replace with your Web3Forms access key ----
-  const WEB3FORMS_ACCESS_KEY = "b8112e55-a700-4e45-b19e-88d9c21dc060";
+  <button type="submit">Submit Survey</button>
 
-  const form  = document.getElementById('surveyForm');
-  const toast = document.getElementById('toast');
-  const submitBtn = document.getElementById('submitBtn');
-  document.getElementById('yr').textContent = new Date().getFullYear();
+</form>
+</div>
 
-  function showToast(msg, ok=true){
-    toast.textContent = msg;
-    toast.className = "toast " + (ok ? "ok" : "err");
-  }
-
-  function validateRequired() {
-    const data = new FormData(form);
-    const requiredNames = ["Contact_Ease","Satisfaction","Issue_Resolved","Improvement_Suggestions"];
-    for (const n of requiredNames){
-      const v = data.get(n);
-      if (!v || (typeof v === "string" && v.trim() === "")) return false;
-    }
-    return true;
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    toast.className = "toast"; toast.textContent = "";
-
-    if (!validateRequired()){
-      showToast("Please answer all required questions.", false);
-      return;
-    }
-
-    submitBtn.disabled = true;
-
-    // Build payload for Web3Forms
-    const fd = new FormData(form);
-    fd.append("access_key", WEB3FORMS_ACCESS_KEY);
-    fd.append("subject", "Vendor Satisfaction Survey – New Response");
-    fd.append("from_name", "Ericsson Support Service Survey");
-
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: fd
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        showToast("Thank you! Your response has been submitted.");
-        form.reset();
-      } else {
-        throw new Error(data.message || "Submission failed");
-      }
-    } catch (err) {
-      console.error(err);
-      showToast("Submission error. Please try again or contact us. (" + err.message + ")", false);
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-</script>
-</script>
 </body>
 </html>
