@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Survey – For vendors who haven’t used Ericsson PTP Support Service Yet</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f6f8fa;
+  }
+  .card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  h1 { color: #00275b; }
+  label { display: block; margin: 5px 0; }
+  textarea { width: 100%; min-height: 100px; }
+  button {
+    background: #00275b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Vendor Survey – For vendors who haven’t used Ericsson PTP Support Service Yet</h1>
+<p>Thank you for your feedback.</p>
+
+<div class="card">
+
+<form action="https://formsubmit.co/hamid-aser-dan.ali@ericsson.com" method="POST">
+
+  <!-- FormSubmit hidden fields -->
+  <input type="hidden" name="_subject" value="Non-Vendor Survey Submission">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://alihamidaser.github.io/Survey/thankyou.html">
+
+  <!-- IDENTIFIER FIELD -->
+  <input type="hidden" name="Survey_Type" value="Non-Vendor Survey">
+
+  <h3>1. If you had an issue related to a Purchase Order, invoice, or payment, do you know how and who to contact? *</h3>
+  <label><input type="radio" name="Know_Contact" value="Yes" required> Yes</label>
+  <label><input type="radio" name="Know_Contact" value="No"> No</label>
+
+  <h3>2. If yes, who would you usually contact?</h3>
+  <textarea name="Who_To_Contact"></textarea>
+
+  <h3>3. Are you satisfied with the support or service you usually receive? *</h3>
+  <label><input type="radio" name="Satisfaction" value="5 - Very satisfied" required> 5 ☆ - Very satisfied</label>
+  <label><input type="radio" name="Satisfaction" value="4 - Satisfied"> 4 ☆ - Satisfied</label>
+  <label><input type="radio" name="Satisfaction" value="3 - Neutral"> 3 ☆ - Neutral</label>
+  <label><input type="radio" name="Satisfaction" value="2 - Dissatisfied"> 2 ☆ - Dissatisfied</label>
+  <label><input type="radio" name="Satisfaction" value="1 - Very dissatisfied"> 1 ☆ - Very dissatisfied</label>
+
+  <h3>4. Were you aware of Ericsson PTP Support Service contact center and the services it provides? *</h3>
+  <label><input type="radio" name="Awareness" value="Yes" required> Yes</label>
+  <label><input type="radio" name="Awareness" value="Partially"> Partially</label>
+  <label><input type="radio" name="Awareness" value="No"> No</label>
+
+  <button type="submit">Submit Survey</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
